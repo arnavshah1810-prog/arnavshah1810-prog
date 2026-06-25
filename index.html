@@ -4,13 +4,534 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arnav Shah | Student Portfolio</title>
+
 <style>
-body{font-family:Arial,sans-serif;background:#050505;color:#fff;padding:40px}
-h1{color:#d4af37}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root{
+    --bg:#050505;
+    --card:#101010;
+    --gold:#d4af37;
+    --gold-light:#f6e27a;
+    --text:#f5f5f5;
+    --muted:#9e9e9e;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,0.7);
+    border-bottom:1px solid rgba(212,175,55,0.15);
+}
+
+nav{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+}
+
+.logo{
+    font-family:'Cinzel',serif;
+    color:var(--gold);
+    font-size:1.3rem;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+    font-size:0.95rem;
+}
+
+.nav-links a:hover{
+    color:var(--gold);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,var(--gold),transparent 70%);
+    opacity:0.08;
+    animation:pulse 5s infinite alternate;
+}
+
+@keyframes pulse{
+    from{transform:scale(1);}
+    to{transform:scale(1.25);}
+}
+
+.hero-content{
+    max-width:900px;
+    padding:20px;
+    z-index:1;
+}
+
+.hero h1{
+    font-family:'Cinzel',serif;
+    font-size:4.5rem;
+    margin-bottom:15px;
+    color:var(--gold);
+    animation:slideGlow 3s infinite alternate;
+}
+
+@keyframes slideGlow{
+    from{
+        text-shadow:0 0 10px rgba(212,175,55,0.2);
+        transform:translateY(0px);
+    }
+    to{
+        text-shadow:0 0 30px rgba(212,175,55,0.8);
+        transform:translateY(-8px);
+    }
+}
+
+.hero h2{
+    font-weight:300;
+    margin-bottom:20px;
+    color:#ddd;
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:650px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.hero-btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:14px 34px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    text-decoration:none;
+    border-radius:50px;
+    transition:0.4s;
+}
+
+.hero-btn:hover{
+    background:var(--gold);
+    color:black;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:100px 40px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-family:'Cinzel',serif;
+    color:var(--gold);
+    font-size:2.5rem;
+}
+
+.section-title p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-box{
+    background:var(--card);
+    padding:40px;
+    border-radius:20px;
+    border:1px solid rgba(212,175,55,0.15);
+}
+
+.about-box p{
+    line-height:1.9;
+    color:#d7d7d7;
+}
+
+/* ================= INTERESTS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:var(--card);
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    transition:0.4s;
+    border:1px solid rgba(212,175,55,0.1);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:var(--gold);
+    box-shadow:0 15px 40px rgba(212,175,55,0.15);
+}
+
+.card span{
+    font-size:3rem;
+}
+
+.card h3{
+    margin:20px 0;
+    color:var(--gold);
+}
+
+/* ================= ACHIEVEMENT ================= */
+
+.achievement{
+    text-align:center;
+}
+
+.achievement-box{
+    background:linear-gradient(135deg,#111,#1a1a1a);
+    border:1px solid rgba(212,175,55,0.25);
+    border-radius:25px;
+    padding:60px;
+    position:relative;
+}
+
+.achievement-box::before{
+    content:"★";
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:2rem;
+    color:var(--gold);
+}
+
+.achievement-box h3{
+    color:var(--gold);
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.achievement-box p{
+    color:#ddd;
+    line-height:1.8;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    text-align:center;
+}
+
+.contact-box{
+    background:var(--card);
+    padding:50px;
+    border-radius:20px;
+    border:1px solid rgba(212,175,55,0.15);
+}
+
+.contact h3{
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+.contact p{
+    color:#d0d0d0;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid rgba(212,175,55,0.15);
+    color:#888;
+}
+
+/* ================= ANIMATIONS ================= */
+
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 1s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
 </style>
 </head>
 <body>
-<h1>Arnav Shah Portfolio</h1>
-<p>This is the HTML file placeholder. Replace with the full website code from the chat if needed.</p>
+
+<header>
+<nav>
+<div class="logo">ARNAV SHAH</div>
+
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#interests">Interests</a>
+<a href="#achievement">Achievement</a>
+<a href="#contact">Connect</a>
+</div>
+</nav>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+<h1>Future Aeronautical Engineer</h1>
+
+<h2>Grade 8 • JSS International School</h2>
+
+<p>
+Exploring the future through aeronautics, robotics, engineering,
+and scientific innovation. Passionate about solving real-world
+problems through technology and creativity.
+</p>
+
+<a href="#about" class="hero-btn">Discover My Journey</a>
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="hidden">
+
+<div class="section-title">
+<h2>About Me</h2>
+<p>The story behind the ambition</p>
+</div>
+
+<div class="about">
+
+<div class="about-box">
+<p>
+Hello! I'm <strong>Arnav Shah</strong>, a Grade 8 student at
+JSS International School with a strong passion for innovation,
+engineering, and scientific discovery.
+<br><br>
+My curiosity drives me to explore how machines work, how aircraft
+defy gravity, and how technology can improve everyday life.
+Whether it's building smart systems, studying physics, or
+experimenting with robotics, I enjoy turning ideas into reality.
+</p>
+</div>
+
+<div class="about-box">
+<p>
+My favourite subject is <strong>Physics</strong> because it explains
+the principles behind motion, energy, and flight.
+I dream of becoming an <strong>Aeronautical Engineer</strong> and
+contributing to the future of aviation and aerospace technology.
+Every project I build is one step closer to that goal.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- INTERESTS -->
+
+<section id="interests" class="hidden">
+
+<div class="section-title">
+<h2>My Interests</h2>
+<p>Fields that inspire me every day</p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<span>✈️</span>
+<h3>Aeronautics</h3>
+<p>
+Learning about aircraft, flight mechanics, propulsion systems,
+and the future of aerospace technology.
+</p>
+</div>
+
+<div class="card">
+<span>🤖</span>
+<h3>Robotics</h3>
+<p>
+Exploring automation, intelligent machines,
+and engineering solutions through robotics.
+</p>
+</div>
+
+<div class="card">
+<span>⚙️</span>
+<h3>Engineering</h3>
+<p>
+Designing, building, and solving practical problems using
+creative engineering principles.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ACHIEVEMENT -->
+
+<section id="achievement" class="achievement hidden">
+
+<div class="section-title">
+<h2>Achievement Spotlight</h2>
+<p>A milestone worth celebrating</p>
+</div>
+
+<div class="achievement-box">
+<h3>🏆 1st Position — STEM Eco-Friendly 2026</h3>
+
+<p>
+Awarded First Position for creating an innovative
+<strong>Smart Home</strong> project that combined sustainability,
+automation, and intelligent technology solutions.
+<br><br>
+This achievement reflects my passion for engineering,
+problem-solving, and designing technology that can make
+everyday living more efficient and environmentally friendly.
+</p>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact hidden">
+
+<div class="section-title">
+<h2>Let's Connect</h2>
+<p>Always excited to discuss science, engineering and innovation</p>
+</div>
+
+<div class="contact-box">
+
+<h3>🚀 Future Goals</h3>
+
+<p>
+Continue building STEM projects, deepen my understanding of
+physics and aeronautics, and pursue a career in
+Aeronautical Engineering.
+</p>
+
+<br>
+
+<p>
+Interested in collaboration, competitions, innovation challenges,
+or educational opportunities in STEM and aerospace.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Arnav Shah • Designed with Vision, Innovation & Engineering Excellence
+</footer>
+
+<script>
+
+/* Fade-In Animation */
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+},{
+    threshold:0.15
+});
+
+document.querySelectorAll('.hidden').forEach((el)=>{
+    observer.observe(el);
+});
+
+</script>
+
 </body>
 </html>
